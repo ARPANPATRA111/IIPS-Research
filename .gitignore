@@ -1,8 +1,24 @@
+# Dependencies
+/node_modules
+
+# SvelteKit output
 /.svelte-kit
 /build
 /.vercel
+
+# Data pipeline (responses cached here; snapshots in scripts/data/out stay tracked)
+/.cache
+scripts/data/out/*.log
+
+# Env (deployment tokens, secrets)
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tests
 test-results
 playwright-report
-/node_modules
-/dist
-/docs
