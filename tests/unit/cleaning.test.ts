@@ -1,16 +1,16 @@
 /** The data scripts' matching and cleaning rules, with real cases met while building the data. */
 import { describe, expect, it } from 'vitest';
-import { classify, cleanPublications, mentions, sameTitle } from '../../../scripts/data/build.ts';
-import { decodeMixed } from '../../../scripts/data/lib.ts';
-import { scoreAuthor, tieWorks, type OpenAlexWork } from '../../../scripts/data/openalex.ts';
+import { classify, cleanPublications, mentions, sameTitle } from '../../scripts/data/build.ts';
+import { decodeMixed } from '../../scripts/data/lib.ts';
+import { scoreAuthor, tieWorks, type OpenAlexWork } from '../../scripts/data/openalex.ts';
 import {
 	authorListHas,
 	nameFit,
 	scoreCandidate,
 	titleListed,
 	type ScholarProfile
-} from '../../../scripts/data/scholar.ts';
-import type { IipsFaculty } from '../../../scripts/data/iips.ts';
+} from '../../scripts/data/scholar.ts';
+import type { IipsFaculty } from '../../scripts/data/iips.ts';
 
 describe('classify', () => {
 	it.each([
