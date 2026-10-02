@@ -1,0 +1,8 @@
+/.svelte-kit
+/build
+/.vercel
+test-results
+playwright-report
+/node_modules
+/dist
+/docs
