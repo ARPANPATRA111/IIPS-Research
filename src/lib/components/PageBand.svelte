@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 	import type { Snippet } from 'svelte';
 
 	let {
@@ -17,7 +17,7 @@
 	} = $props();
 </script>
 
-<section class="band">
+<section class="band" style:--campus="url({asset('/brand/iips-campus.webp')})">
 	<div class="wrap">
 		<nav aria-label="Breadcrumb" class="crumbs no-print">
 			<ol>
@@ -46,7 +46,7 @@
 	.band {
 		background:
 			linear-gradient(rgb(248 250 252 / 0.94), rgb(248 250 252 / 0.94)),
-			url('/brand/iips-campus.webp') center 40% / cover;
+			var(--campus) center 40% / cover;
 		border-bottom: 1px solid var(--line);
 		padding: 22px 0 30px;
 	}

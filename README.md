@@ -2,6 +2,8 @@
 
 Faculty profiles, publications and research scores for the International Institute of Professional Studies (IIPS), DAVV Indore. A static site: one JSON snapshot, no database, every page prerendered.
 
+**Live:** https://arpanpatra111.github.io/IIPS-Research/ (also at https://iips-research.vercel.app)
+
 ![Portal home](docs/screens/home.webp)
 
 |                                               |                                             |
@@ -71,18 +73,34 @@ On a fresh Linux machine the browser install may need system dependencies: run
 
 ## Deploy
 
-Every route is prerendered, so `pnpm build` produces plain HTML, CSS and JS in `build/`. Serve that folder from any static host.
+Every route is prerendered, so `pnpm build` produces plain HTML, CSS and JS in `build/`, including a `404.html` that static hosts serve for unknown addresses. The site is live on two hosts, both deployed automatically on every push to `main`:
 
-Vercel (static output):
+- GitHub Pages: https://arpanpatra111.github.io/IIPS-Research/
+- Vercel: https://iips-research.vercel.app
+
+### GitHub Pages
+
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) builds with `BASE_PATH=/IIPS-Research` (Pages serves a project site under `/<repo>`) and publishes `build/`. In the repository settings, **Pages → Source** must be set to **GitHub Actions**. To redeploy without a push, run the workflow from the **Actions** tab.
+
+To build the Pages version locally:
+
+```bash
+BASE_PATH=/IIPS-Research pnpm build
+```
+
+(In Git Bash on Windows, prefix it with `MSYS_NO_PATHCONV=1` so the path is not rewritten.)
+
+### Vercel
+
+The project `iips-research` is linked to this repository, and [`vercel.json`](vercel.json) tells Vercel to build with pnpm and serve `build/` as plain static files. To deploy from your machine instead:
 
 ```bash
 vercel login
-vercel link --yes --project iips-research-portal   # first time only
-vercel build --prod
-vercel deploy --prebuilt --prod
+vercel link --yes --project iips-research   # first time only
+vercel deploy --prod
 ```
 
-No `vercel.json` is needed: adapter-static runs in zero-config mode. Other hosts (Netlify, GitHub Pages, nginx, …) work the same way — point them at `build/`.
+Other static hosts (Netlify, nginx, …) work the same way: run `pnpm build` and serve `build/`, with `BASE_PATH` set if the site lives under a subpath.
 
 ## Data
 

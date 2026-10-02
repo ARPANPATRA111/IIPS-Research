@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 	import Grade from '$lib/components/Grade.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import Photo from '$lib/components/Photo.svelte';
@@ -19,7 +19,7 @@
 	/>
 </svelte:head>
 
-<section class="hero">
+<section class="hero" style:--campus="url({asset('/brand/iips-campus.webp')})">
 	<div class="wrap hero-in">
 		<span class="pill"><span class="dot"></span> Data checked {longDate(data.updated)}</span>
 		<h1>
@@ -192,7 +192,7 @@
 		position: relative;
 		background:
 			linear-gradient(rgb(255 255 255 / 0.84), rgb(255 255 255 / 0.84)),
-			url('/brand/iips-campus.webp') center / cover;
+			var(--campus) center / cover;
 		border-bottom: 1px solid var(--line);
 		text-align: center;
 	}
