@@ -22,3 +22,4 @@ Thumbs.db
 # Tests
 test-results
 playwright-report
+build-pdf.ts
